@@ -11,6 +11,7 @@ import re
 # woefully python 2.7, but it's just a one-time script
 
 remap_input = 'CU_Lectures_6-27-16_handles.csv'
+# May get updated when missing files are handed back from Desi and Mira
 digpres_input = "i don't know yet"
 
 remap = {}
@@ -37,8 +38,8 @@ with open(remap_input, 'rb') as csvfile:
             callno = filepattern.group(1)
             tapeno = filepattern.group(2)
 
-            newname = 'CUL_Lectures_{0}_A{1}_{2}_{3}'.format(row['AccessionNumber'], callno.zfill(4), 
+            newname = 'CULectures_{0}_A{1}_{2}_{3}'.format(row['AccessionNumber'], callno.zfill(4), 
                                                              tapeno.zfill(2), endname)
-            print("rename -n -i -s {0} {1} Access_Copies/*".format(filename,newname))
-            print("rename -n -i -s {0} {1} Preservation_Masters_96_24/*".format(filename,newname))
-#            print("{0} {1}".format(filename, newname))
+#            print("rename -n -i -s {0} {1} Access_Copies/*".format(filename,newname))
+#            print("rename -n -i -s {0} {1} Preservation_Masters_96_24/*".format(filename,newname))
+            print("{0}\t{1}\t{2}".format(filename, newname, row['dcidentifieruri']))
